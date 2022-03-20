@@ -25,16 +25,21 @@ function clickListeners(){
 // Render tasks function
 function renderTasks(tasks) {
   console.log('in render function', tasks);
-
+ // update DOM with taskTable
   // Empty the table
   $('#taskTable').empty();
 
-  // Render each new task
+  // Render each new task  // case sensitive
+//   // Example: $('#outputDiv').append(`
+//   <h4>${joke.whoseJoke}'s joke</h4><p>${joke.jokeQuestion} ${joke.punchLine}</p>
+//   `)
+// }
+// }
   for (let task of tasks) {
       $('#taskTable').append(`
           <tr data-id=${task.id}>
               <td class="task">${task.task}</td>
-              <td class="notes">${task.completed}</td>
+              <td class="        ">${task.completed}</td>  
               <td class="completed">${task.delete}</td>
               <td>
                   <button class="completeBtn">
@@ -68,13 +73,13 @@ function getTasks(){
   })
 }; // End of getTasks function
 
-// POST Ajax
+// POST Ajax  // check my case Levels   ***********
 function addTasks(){
   console.log('in addTasks function');
 
   let newTask = {
       task: $('#taskIn').val(),
-      notes: $('#notesIn').val(),
+      completed: $('#completedIn').val(),
   };
 
   $.ajax({
@@ -118,11 +123,7 @@ function modifyTasks() {
   // Setting variable to get id
   let taskId = $(this).parents('tr').data('id');
 
-  // Gathering other information via variables
-  // let taskTask = $(this).parent().siblings('.task').text();
-  // let taskNotes = $(this).parent().siblings('.notes').text();
-  // let taskCompletion = $(this).parent().siblings('.completion').text();
-  
+
   // Ajax request
   $.ajax({
       method: "PUT",
