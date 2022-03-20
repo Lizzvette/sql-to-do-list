@@ -24,7 +24,7 @@ router.post('/',  (req, res) => {
   let newTask = req.body;
   console.log(`adding post task`, newTask);
   
-  //Query text to insert the new task into the database   
+  //Query text to insert the new task into the database // $3 if another value in sql &   
   let queryText = `INSERT INTO "task" ("task", "complete_date") 
                    VALUES ($1, $2)`;
 

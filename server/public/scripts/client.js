@@ -1,33 +1,35 @@
-$(document).ready( function() {
-  console.log('client.js working');     ///////////
+$(document).ready(onReady) 
+  console.log('client.js working');     //Click listeners
+ function onReady (){
 
-  //Click listeners
-  clickListeners();
+    $(`#taskTable`).on('click', `#taskIn`, task) // Refer index
+    $(`#taskTable`).on('click', `#completedIn`, completed) 
+    $(`#taskTable`).on('click', `#deleteIn`) // Refer index - doesn't want delete word
+   
+    clickListeners();
+    getTasks();
+};// End of .ready function
 
-  // Render function
-  getTasks();
-}); // End of .ready function
+function clickListeners()
+//   console.log('listening for clicks');
 
-function clickListeners(){
-  console.log('listening for clicks');
+//   //  listener
+//   $('#taskTable').on('submit', addTasks);
 
-  // Submit listener
-  $('#taskForm').on('submit', addTasks);
+//   // Delete button
+//   $(document).on('click', '.deleteBtn', deleteTasks);
 
-  // Delete button
-  $(document).on('click', '.deleteBtn', deleteTasks);
+//   // Complete button listener
+//   $(document).on('click', '.completeBtn', modifyTasks)
 
-  // Complete button listener
-  $(document).on('click', '.completeBtn', modifyTasks)
-
-}; // End of clickListeners function
+ // End of clickListeners function
 
 // Render tasks function
 function renderTasks(tasks) {
   console.log('in render function', tasks);
  // update DOM with taskTable
   // Empty the table
-  $('#taskTable').empty();
+  $('#taskTable').empty();  // taskForm, taskTable is for inputs *****************
 
   // Render each new task  // case sensitive
 //   // Example: $('#outputDiv').append(`
@@ -39,16 +41,16 @@ function renderTasks(tasks) {
       $('#taskTable').append(`
           <tr data-id=${task.id}>
               <td class="task">${task.task}</td>
-              <td class="        ">${task.completed}</td>  
-              <td class="completed">${task.delete}</td>
+              <td class="completed">${task.completed}</td>  
+              <td class="delete">${task.delete}</td>
               <td>
-                  <button class="completeBtn">
-                      Completed
+                  <button class="completedBtn">
+                      completed
                   </button>
               </td>
               <td>
                   <button class="deleteBtn">
-                      Delete
+                      delete
                   </button>
               </td>
           </tr>
