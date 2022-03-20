@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(174, 174, 226);
+    font-family: 'Fredoka', sans-serif;
+}
+header {
+    font-size: 12;
+    border: 1px rgb(106, 106, 212);
+    border-radius: 6px;
+}
+
+h1 {
+    font-family: 'Fredoka', sans-serif;size: 25px;
+}
+
+button, input, #genderIn, #readyForTransferIn {
+    border: none;
+    border-radius: 6px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* img {
+border-radius: 10px;
+} */
+
+
+
