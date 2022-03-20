@@ -34,8 +34,8 @@ function renderTasks(tasks) {
       $('#taskTable').append(`
           <tr data-id=${task.id}>
               <td class="task">${task.task}</td>
-              <td class="notes">${task.notes}</td>
-              <td class="completed">${task.completed}</td>
+              <td class="notes">${task.completed}</td>
+              <td class="completed">${task.delete}</td>
               <td>
                   <button class="completeBtn">
                       Completed
