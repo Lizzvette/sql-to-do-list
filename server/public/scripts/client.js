@@ -1,29 +1,31 @@
-$(document).ready(onReady) 
+$(document).ready(onReady) // check extension - get rid of some autofills
   console.log('client.js working');     //Click listeners
  function onReady (){
 
     $(`#taskTable`).on('click', `#taskIn`, task) // Refer index
     $(`#taskTable`).on('click', `#completedIn`, completed) 
     $(`#taskTable`).on('click', `#deleteIn`) // Refer index - doesn't want delete word
-   
+   // I want the taskTable but....
+    // $(`#taskForm`).on('click', `#taskIn`, task) // Refer index
+    // $(`#taskForm`).on('click', `#completedIn`, completed) 
+    // $(`#taskForm`).on('click', `#deleteIn`) // Refer index - doesn't want delete word
     clickListeners();
     getTasks();
 };// End of .ready function
 
-function clickListeners()
-//   console.log('listening for clicks');
+function clickListeners(){
+  //  listener
+  $('#addBtn').on('click', function(){
+    console.log('in addButton on click');
 
-//   //  listener
-//   $('#taskTable').on('submit', addTasks);
+  // Delete button
+  $(document).on('click', '.deleteBtn', deleteTasks);
 
-//   // Delete button
-//   $(document).on('click', '.deleteBtn', deleteTasks);
+  // Complete button listener
+  $(document).on('click', '.completeBtn', modifyTasks);
 
-//   // Complete button listener
-//   $(document).on('click', '.completeBtn', modifyTasks)
-
- // End of clickListeners function
-
+ //End of clickListeners function
+}};
 // Render tasks function
 function renderTasks(tasks) {
   console.log('in render function', tasks);
@@ -64,7 +66,7 @@ function getTasks(){
 
   $.ajax({
       method: 'GET',
-      url: '/tasks'
+      url: '/task'
   })
   .then((res) => {
       console.log('get response', res);
@@ -80,14 +82,14 @@ function addTasks(){
   console.log('in addTasks function');
 
   let newTask = {
-      task: $('#taskIn').val(),
+      task: $('#taskTable').val(),
       completed: $('#completedIn').val(),
   };
 
   $.ajax({
       method: 'POST',
-      url: '/tasks',
-      data: newTask
+      url: '/task',
+      data: {newTask}
   })
   .then((res) => {
       console.log('post response', res);
@@ -106,7 +108,7 @@ function deleteTasks(){
 
   $.ajax({
       method: 'DELETE',
-      url: `/tasks/${taskId}`,
+      url: `/task/${taskId}`,
   })
   .then((res) => {
       console.log('delete response', res);
@@ -129,7 +131,7 @@ function modifyTasks() {
   // Ajax request
   $.ajax({
       method: "PUT",
-      url: `/tasks/${taskId}`
+      url: `/task/${taskId}`
   })
   .then((res) => {
       console.log('completion success', res)

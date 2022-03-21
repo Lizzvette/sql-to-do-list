@@ -11,8 +11,11 @@ header {
 h1 {
     font-family: 'Fredoka', sans-serif;size: 25px;
 }
+::placeholder {
+    color: lightgray;
+}
 
-button, input, #genderIn, #readyForTransferIn {
+button{
     border: none;
     border-radius: 6px;
     font-family: 'Fredoka', sans-serif;

@@ -33,7 +33,7 @@ router.post('/',  (req, res) => {
    // Option - let
 
   let queryParams = [
-    newTask.Task,   // CASE *************************
+    newTask.Task,   // CASE sensitive? *************************
     newTask.Completed,
     newTask.Delete
   ];
@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
         SET "completed_status" = true
         WHERE "id" = $1;`;
 
-    const values = [id]; // where and why *************************
+    const values = [id]; // can't have two
 
     pool.query(queryText, queryParams)
         .then(result => {  // *********************  Is that from koala?
